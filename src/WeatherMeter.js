@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { getIndicatorLevel } from './utils'
+
 export default ({
   isActive = true,
   value
@@ -11,7 +13,7 @@ export default ({
 
   const wrapperClasses = wrapperClassesArr.join(' ')
 
-  const indicatorClasses = ['wm-meter-indicator', 'qtr-4'].join(' ')
+  const indicatorClasses = ['wm-meter-indicator', getIndicatorLevel(value)].join(' ')
 
   return (
     <div className={wrapperClasses}>

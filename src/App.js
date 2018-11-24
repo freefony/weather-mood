@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className='App'>
         Weather Mood
-        <WeatherMeter value={90} />
+        <WeatherMeter value={80} />
       </div>
     )
   }
