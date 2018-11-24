@@ -1,7 +1,7 @@
-const VERY_GOOD_WEATHER = 'qtr-4'
-const GOOD_WEATHER = 'qtr-3'
-const POOR_WEATHER = 'qtr-2'
-const EXTREME_WEATHER = 'qtr-1'
+export const VERY_GOOD_WEATHER = 'qtr-4'
+export const GOOD_WEATHER = 'qtr-3'
+export const POOR_WEATHER = 'qtr-2'
+export const EXTREME_WEATHER = 'qtr-1'
 
 export const getIndicatorLevel = (value) => {
   switch (true) {
