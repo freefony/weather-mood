@@ -3,7 +3,7 @@
 import LondonWeather from './london.forecast.json'
 
 import { 
-  calculateConditions, minLevel, maxLevel
+  calculateConditions, MIN_LEVEL, MAX_LEVEL
 } from './weather-api'
 
 describe('weather api', () => {
@@ -12,9 +12,9 @@ describe('weather api', () => {
     expect(level).toBeDefined()
   })
   it('should be a positive interger', () => {
-    expect(level).toBeGreaterThanOrEqual(minLevel)
+    expect(level).toBeGreaterThanOrEqual(MIN_LEVEL)
   })
-  it('should not be grater than maxLevel', () => {
-    expect(level).toBeLessThanOrEqual(maxLevel)
+  it('should not be grater than MAX_LEVEL', () => {
+    expect(level).toBeLessThanOrEqual(MAX_LEVEL)
   })
 })
