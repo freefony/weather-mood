@@ -1,6 +1,11 @@
+/* global fetch */
+
 export const MAX_LEVEL = 100
 export const MIN_LEVEL = 0
 export const REDUCE_LEVEL = 50
+
+const endpoint = 'http://api.openweathermap.org/data/2.5/forecast?q='
+const apiKey = process.env.REACT_APP_API_KEY
 
 const conditions = {
   clear: { weight: 2 },
@@ -20,3 +25,17 @@ const weatherForecastReducer = (level, { weather }) => {
 }
 
 export const calculateConditions = apiResponse => (apiResponse.list.reduce(weatherForecastReducer, REDUCE_LEVEL))
+
+export const fetchForecast = async (city) => {
+  try {
+    const response = await fetch(`${endpoint}${city}&appid=${apiKey}`)
+    const data = await response.json()
+    if(!data.list) {
+      throw Error('failed to load weather data')
+    }
+    return calculateConditions(data)
+  } catch (e) {
+    console.error('Error has occurred: ', e)
+  }
+  
+}
