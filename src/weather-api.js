@@ -39,3 +39,10 @@ export const fetchForecast = async (city) => {
   }
   
 }
+
+export const scheduleUpdate =  (city, onsuccess, delay = 1000 * 60 * 10) => {
+  return setInterval(async () => {
+    const value = await fetchForecast(city)
+    onsuccess(value)
+  }, delay)
+}

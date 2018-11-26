@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WeatherMeter from './WeatherMeter'
 
-import { fetchForecast } from './weather-api'
+import { fetchForecast, scheduleUpdate } from './weather-api'
 
 export default class WeatherMeterContainer extends Component {
   constructor ({ city }) {
@@ -12,10 +12,21 @@ export default class WeatherMeterContainer extends Component {
     }
   }
 
-  async componentWillMount () {
-    const { city } = this.props
-    const value = await fetchForecast(city)
+  updateValue = (value) => {
     this.setState(() => ({value}))
+  }
+
+  async componentWillMount () {
+    const { city, delay } = this.props
+    const value = await fetchForecast(city)
+    this.updateValue(value)
+    const intervalKey = scheduleUpdate(city, this.updateValue, delay)
+    this.setState({intervalKey})
+  }
+
+  componentWillUnmount () {
+    const { intervalKey } = this.state
+    clearInterval(intervalKey)
   }
 
   render () {
