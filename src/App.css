@@ -32,3 +32,36 @@
 .wm-meter-indicator.qtr-4 {
   background: linear-gradient(360deg, #c92a12 0%, #ef4815 33%, #cadb13 65%, #42bf26 100%)
 }
+
+.wm-header-wrapper {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: solid #c3c3c3 1px
+}
+
+.wm-app-name {
+  color: #3333ee;
+  font-weight: 500;
+  font-size: 16px
+}
+
+.wm-app-controls button {
+  background: inherit;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  color: #a3a3a3;
+  cursor: pointer;
+  outline: none
+}
+
+.wm-app-controls button:active {
+  outline: none
+}
+
+.wm-app-controls button.active-tab {
+  border-bottom: 2px solid #3333ee
+}
