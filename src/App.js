@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import './App.css'
-
 import WeatherMeter from './WeatherMeterContainer'
 import Header from './Header'
+
+const cities = ['Moscow, RU', 'New York, US', 'Amsterdam, NL']
 class App extends Component {
   constructor () {
     super()
     this.state = {
-      cities: ['Moscow', 'New York', 'Amsterdam'],
-      activeCity: 'Moscow'
+      cities,
+      activeCity: cities[0]
     }
   }
 
