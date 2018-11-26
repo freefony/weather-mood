@@ -3,7 +3,7 @@ import React from 'react'
 export default ({cities, activeCity, switchCity}) => {
   const isActive = (city) => (city === activeCity) ? 'active-tab': ''
 
-  const citiesEl = cities.map((city, i) => <button 
+  const citiesEl = cities.map((city, i) => <button
     key={i} 
     onClick={() => switchCity(city)}
     className={isActive(city)}
