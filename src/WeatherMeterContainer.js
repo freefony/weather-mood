@@ -16,12 +16,25 @@ export default class WeatherMeterContainer extends Component {
     this.setState(() => ({value}))
   }
 
-  async componentWillMount () {
-    const { city, delay } = this.props
+  getAndScheduleFetch = async (city, delay) => {
     const value = await fetchForecast(city)
     this.updateValue(value)
     const intervalKey = scheduleUpdate(city, this.updateValue, delay)
     this.setState({intervalKey})
+  }
+
+  async componentWillMount () {
+    const { city, delay } = this.props
+    this.getAndScheduleFetch(city, delay)
+  }
+
+  async componentDidUpdate (prevProps, prevState) {
+    const { city, delay } = this.props
+    if (city !== prevState.city) {
+      clearInterval(this.state.intervalKey)
+      this.getAndScheduleFetch(city, delay)
+      this.setState(() =>({city}))
+    }
   }
 
   componentWillUnmount () {
